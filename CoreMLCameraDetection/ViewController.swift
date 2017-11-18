@@ -11,10 +11,22 @@ import AVKit
 import Vision
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
-
+    
+    let labelIdentifier: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .black
+        label.textColor = .white
+        label.textAlignment = .center
+        label.layer.cornerRadius = 10
+        label.layer.masksToBounds = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.addSubview(labelIdentifier)
+
         // Where we start the camera
         let captureSession = AVCaptureSession()
         captureSession.sessionPreset = .photo
@@ -32,6 +44,16 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let dataOutput = AVCaptureVideoDataOutput()
         dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
         captureSession.addOutput(dataOutput)
+        
+        setupLabelConstraints()
+    }
+    
+    func setupLabelConstraints() {
+        labelIdentifier.topAnchor.constraint(equalTo: view.topAnchor, constant: 600).isActive = true
+        labelIdentifier.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+        labelIdentifier.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        labelIdentifier.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        labelIdentifier.widthAnchor.constraint(equalToConstant: 350).isActive = true
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
@@ -45,7 +67,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             guard let results = finRequest.results as? [VNClassificationObservation] else { return }
             guard let firstObservation = results.first else { return }
             
-            print(firstObservation.identifier, firstObservation.confidence)
+            DispatchQueue.main.async {
+                self.labelIdentifier.text = "\(firstObservation.identifier, (firstObservation.confidence * 100).rounded())"
+            }
         }
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])
     }
