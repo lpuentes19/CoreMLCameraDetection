@@ -12,6 +12,7 @@
 		95FC86B41FBFEB3A0041E05B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FC86B21FBFEB3A0041E05B /* Main.storyboard */; };
 		95FC86B61FBFEB3A0041E05B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95FC86B51FBFEB3A0041E05B /* Assets.xcassets */; };
 		95FC86B91FBFEB3A0041E05B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FC86B71FBFEB3A0041E05B /* LaunchScreen.storyboard */; };
+		95FC86C21FC000420041E05B /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 95FC86C11FC000410041E05B /* SqueezeNet.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		95FC86B51FBFEB3A0041E05B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95FC86B81FBFEB3A0041E05B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95FC86BA1FBFEB3A0041E05B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95FC86C11FC000410041E05B /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +58,21 @@
 			children = (
 				95FC86B01FBFEB3A0041E05B /* ViewController.swift */,
 				95FC86B21FBFEB3A0041E05B /* Main.storyboard */,
+				95FC86C01FBFFA2C0041E05B /* Resources */,
+			);
+			path = CoreMLCameraDetection;
+			sourceTree = "<group>";
+		};
+		95FC86C01FBFFA2C0041E05B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				95FC86AE1FBFEB3A0041E05B /* AppDelegate.swift */,
 				95FC86B51FBFEB3A0041E05B /* Assets.xcassets */,
 				95FC86B71FBFEB3A0041E05B /* LaunchScreen.storyboard */,
+				95FC86C11FC000410041E05B /* SqueezeNet.mlmodel */,
 				95FC86BA1FBFEB3A0041E05B /* Info.plist */,
 			);
-			path = CoreMLCameraDetection;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95FC86B11FBFEB3A0041E05B /* ViewController.swift in Sources */,
+				95FC86C21FC000420041E05B /* SqueezeNet.mlmodel in Sources */,
 				95FC86AF1FBFEB3A0041E05B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,7 +288,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H9L7P6ZCN6;
-				INFOPLIST_FILE = CoreMLCameraDetection/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CoreMLCameraDetection/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CoreMLCameraDetection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -291,7 +303,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H9L7P6ZCN6;
-				INFOPLIST_FILE = CoreMLCameraDetection/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/CoreMLCameraDetection/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.CoreMLCameraDetection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
